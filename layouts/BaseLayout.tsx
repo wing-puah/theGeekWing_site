@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
 
 import Navbar from 'UI/Navbar';
 
 import { LayoutProps } from './layoutTypes';
 
-function BaseLayout({ children }: LayoutProps) {
-  console.log({ children });
+function BaseLayout({ children }: LayoutProps): ReactElement {
   return (
     <div>
       <Navbar />
@@ -16,6 +15,6 @@ function BaseLayout({ children }: LayoutProps) {
 
 export default BaseLayout;
 
-export function getLayout(page: ReactNode) {
+export function getLayout(page: ReactNode): ReactElement {
   return <BaseLayout>{page}</BaseLayout>;
 }

@@ -1,9 +1,10 @@
 import Head from 'next/head';
 
 import { getLayout } from 'layouts/BaseLayout';
+import { config } from 'components/home/config';
 
 function Home() {
-  return <>'HOm22aaaaaaasSS2e'</>;
+  return <>{config.intro}</>;
 }
 
 Home.getLayout = getLayout;

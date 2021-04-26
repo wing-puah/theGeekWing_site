@@ -5,6 +5,8 @@ import {
   Button,
 } from '@blueprintjs/core';
 
+const NavContent = () => {};
+
 const Navbar = () => {
   return (
     <BpNavbar>
