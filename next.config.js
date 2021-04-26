@@ -1,7 +1,5 @@
 const path = require('path');
 
-// const { moduleAlias } = require('./alias.js');next.
-
 module.exports = {
   webpack: (config) => {
     const alias = {
