@@ -1,5 +1,8 @@
 import Head from 'next/head';
 import { FunctionComponent } from 'react';
+import { ThemeProvider } from 'styled-components';
+
+import theme from 'styles/theme';
 
 type MyAppProps = {
   Component: any;
@@ -17,7 +20,9 @@ const MyApp: FunctionComponent<MyAppProps> = ({ Component, pageProps }) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      {getLayout(<Component {...pageProps} />)}
+      <ThemeProvider theme={theme}>
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
     </>
   );
 };

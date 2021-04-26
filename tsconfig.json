@@ -17,6 +17,7 @@
     "paths": {
       "components/*": ["components/*"],
       "UI/*": ["components/UI/*"],
+      "styles/*": ["components/styles/*"],
       "layouts/*": ["layouts/*"]
     }
   },

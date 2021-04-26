@@ -1,6 +1,5 @@
-import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import { Parallax, ParallaxLayer } from '@react-spring/web/parallax';
+import { useSpring, animated } from 'react-spring';
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -11,33 +10,18 @@ type NavContentProps = {
 };
 
 function NavContent<NavContentProps>({ isVisible, toggleMenu }) {
-  return (
-    <Parallax pages={2} style={{ top: '0', left: '0' }}>
-      <ParallaxLayer
-        offset={0}
-        speed={2.5}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <p>Scroll down</p>
-      </ParallaxLayer>
-      <ParallaxLayer
-        offset={1}
-        speed={0.5}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: 'white',
-        }}
-      >
-        <p>Scroll up</p>
-      </ParallaxLayer>
-    </Parallax>
-  );
+  const styles = useSpring({
+    to: {
+      height: isVisible ? 500 : 0,
+      opacity: isVisible ? 1 : 0,
+      width: isVisible ? 1000 : 0,
+      position: 'absolute',
+      background: 'red',
+    },
+    config: { mass: 5, tension: 500, friction: 80 },
+  });
+
+  return <animated.div style={styles}>Menu content</animated.div>;
 }
 
 const Navbar = () => {

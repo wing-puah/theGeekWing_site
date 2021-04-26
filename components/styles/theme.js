@@ -17,7 +17,7 @@ const mediaWidthRules = (rule, breakpoint) => {
   return `${_rule}-width: ${breakpoint}px`;
 };
 
-const breakpointsMixin = rule => {
+const breakpointsMixin = (rule) => {
   return Object.keys(breakpointsValue).reduce((acc, cur) => {
     acc[cur] = `@media only screen and (${mediaWidthRules(
       rule,
@@ -121,6 +121,7 @@ const zIndex = {
   modal: 1300,
   snackbar: 1400,
   tooltip: 1500,
+  menu: 2000,
 };
 
 const theme = {

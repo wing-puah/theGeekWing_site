@@ -5,6 +5,7 @@ module.exports = {
     const alias = {
       components: path.join(__dirname, 'components'),
       UI: path.join(__dirname, 'components/UI'),
+      styles: path.join(__dirname, 'components/styles'),
       layouts: path.join(__dirname, 'layouts'),
     };
     config.resolve.alias = {
