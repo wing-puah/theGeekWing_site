@@ -6,6 +6,7 @@ module.exports = {
       components: path.join(__dirname, 'components'),
       UI: path.join(__dirname, 'components/UI'),
       styles: path.join(__dirname, 'components/styles'),
+      reactHooks: path.join(__dirname, 'components/reactHooks'),
       layouts: path.join(__dirname, 'layouts'),
     };
     config.resolve.alias = {

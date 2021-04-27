@@ -18,6 +18,7 @@
       "components/*": ["components/*"],
       "UI/*": ["components/UI/*"],
       "styles/*": ["components/styles/*"],
+      "reactHooks/*": ["components/reactHooks/*"],
       "layouts/*": ["layouts/*"]
     }
   },

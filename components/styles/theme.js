@@ -154,8 +154,8 @@ const theme = {
     },
   },
   navigation: {
-    default: '#dddddd',
-    hover: '#155902',
+    default: '#48A9A6',
+    hover: '#C1666B',
   },
   footer: {
     background: '#69168C',

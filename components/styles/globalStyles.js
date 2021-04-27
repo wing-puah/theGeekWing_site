@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import theme, { device } from 'theme';
+import theme, { device } from './theme';
 
 const tableCellMixin = css`
   border-right: 1px solid ${theme.palette.grey[400]};
@@ -11,8 +11,6 @@ const tableCellMixin = css`
 `;
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Exo:400,900|Open+Sans:400,400i,700,700i&display=swap');
-
   body {
     color: ${theme.palette.text.primary};
     position: relative;
