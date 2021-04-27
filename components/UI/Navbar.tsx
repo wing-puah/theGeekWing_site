@@ -16,6 +16,11 @@ const navConfig = [
   { text: 'Contact', url: '/contact' },
 ];
 
+const NavContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+`;
+
 const NavLink = styled.div`
   position: relative;
 
@@ -71,8 +76,8 @@ type NavContentProps = {
 function NavContent<NavContentProps>({ isVisible, onClick }) {
   const { width, height } = useWindowSize();
   const styles = useSpring({
-    from: { position: 'fixed', width },
     to: {
+      width,
       height: isVisible ? height : 0,
       opacity: isVisible ? 0.9 : 0,
       bottom: isVisible ? 0 : -999,
@@ -85,17 +90,19 @@ function NavContent<NavContentProps>({ isVisible, onClick }) {
   });
 
   return (
-    <animated.div style={styles}>
-      <div className="text-center">
-        {navConfig.map((singleNav) => (
-          <SingleNavLink
-            {...singleNav}
-            key={singleNav.text}
-            onClick={onClick}
-          />
-        ))}
-      </div>
-    </animated.div>
+    <NavContainer>
+      <animated.div style={styles}>
+        <div className="text-center">
+          {navConfig.map((singleNav) => (
+            <SingleNavLink
+              {...singleNav}
+              key={singleNav.text}
+              onClick={onClick}
+            />
+          ))}
+        </div>
+      </animated.div>
+    </NavContainer>
   );
 }
 
