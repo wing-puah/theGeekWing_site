@@ -3,10 +3,7 @@ import styled from 'styled-components';
 
 import { journeyPoints } from '../config';
 
-import { Plane, MeshDistortMaterial, Sphere } from '@react-three/drei';
-import { Stars, Html } from '@react-three/drei';
-
-import { palette } from 'styles/theme';
+import { Html } from '@react-three/drei';
 
 import Model from './Model';
 
@@ -24,6 +21,7 @@ const Light = () => {
     <>
       <ambientLight intensity={0.5} />
       <directionalLight intensity={0.5} position={[0, 500, 200]} />
+      <spotLight position={[0, 50, 0]} intensity={0.7} />
     </>
   );
 };
