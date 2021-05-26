@@ -17,7 +17,7 @@ const navConfig = [
 ];
 
 const NavContainer = styled.div`
-  position: fixed;
+  position: fixed;*6
   bottom: 0;
 `;
 
