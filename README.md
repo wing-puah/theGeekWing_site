@@ -1,5 +1,9 @@
 ### Notes
 
+For next.js hotreloading to work in WSL, set the env variable `CHOKIDAR_USEPOLLING=true` by using the command `export CHOKIDAR_USEPOLLING=true`
+
+**See**: https://github.com/vercel/next.js/issues/7839
+
 Use pm2 with next:
 
 **Development**

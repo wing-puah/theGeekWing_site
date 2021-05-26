@@ -6,10 +6,7 @@ function Home() {
   return (
     <>
       {config.intro}
-      <div className="p-3">
-        <Hero />
-        <h1>New site coming soon</h1>
-      </div>
+      <Hero />
     </>
   );
 }

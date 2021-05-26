@@ -167,5 +167,5 @@ const theme = {
   typography,
 };
 
-export { device };
+export { device, palette };
 export default theme;
