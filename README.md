@@ -47,6 +47,12 @@ pm2 start npm --name "next" -- start
 
 "SSRBs_Hololive" (https://skfb.ly/onQON) by Armored Interactive is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
+### gtlf models
+
+-- run npx gltfjsx model.gltf ont he command line
+
+[gltfjsx](https://github.com/pmndrs/gltfjsx)
+
 <!-- "Looking Glass Robot" (https://skfb.ly/6WSBW) by ejlabarbera is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
 
 <!-- "Cats - Rigged and Posed" (https://skfb.ly/6SUQF) by Bunnyyyy is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->

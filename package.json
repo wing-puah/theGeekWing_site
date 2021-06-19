@@ -13,6 +13,7 @@
     "@react-spring/parallax": "^9.1.2",
     "@react-spring/three": "^9.1.2",
     "@react-spring/web": "^9.1.2",
+    "@react-three/cannon": "^2.3.2",
     "@react-three/drei": "^5.2.0",
     "@react-three/fiber": "^6.2.2",
     "next": "10.1.3",

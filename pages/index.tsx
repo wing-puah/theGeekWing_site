@@ -1,5 +1,6 @@
 import { getLayout } from 'layouts/BaseLayout';
 import { config } from 'components/home/config';
+
 import Hero from 'components/home/Hero';
 
 function Home() {
