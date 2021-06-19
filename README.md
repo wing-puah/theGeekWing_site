@@ -24,3 +24,37 @@ pm2 start npm --name "next" -- start
 ## Docker resources
 
 [Next.js + Docker. Made easy.](https://dev.to/kumar_abhirup/next-js-docker-made-easy-2bok)
+
+## Models resources
+
+[Sketchfab](https://sketchfab.com/feed)
+
+[Poly](https://poly.google.com/)
+
+[Mixamo](https://www.mixamo.com/#/)
+
+## Three.js resources
+
+[gatsby-react-three-fiber-demo](https://github.com/jlengstorf/gatsby-react-three-fiber-demo/blob/master/src/pages/index.js)
+
+[Loading 3D models](https://threejs.org/docs/#manual/en/introduction/Loading-3D-models)
+
+[Can not load GLTFLoader in nextjs application!](https://discourse.threejs.org/t/can-not-load-gltfloader-in-nextjs-application/12317/11)
+
+[React Three Fiber Character Animation](https://codeworkshop.dev/blog/2021-01-20-react-three-fiber-character-animation/)
+
+[Replacing default perspective camera in reactJS app](https://discourse.threejs.org/t/replacing-default-perspective-camera-in-reactjs-app/17038)
+
+"SSRBs_Hololive" (https://skfb.ly/onQON) by Armored Interactive is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+<!-- "Looking Glass Robot" (https://skfb.ly/6WSBW) by ejlabarbera is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
+<!-- "Cats - Rigged and Posed" (https://skfb.ly/6SUQF) by Bunnyyyy is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
+<!-- "Walking robot" (https://skfb.ly/6Rn8T) by komov is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
+<!-- "Little cute robot" (https://skfb.ly/6pMBD) by Poll_Creations is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
+<!-- "The Lighthouse" (https://skfb.ly/6rU7V) by cotman sam is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
+<!-- "Magic Book" (https://skfb.ly/6EysQ) by Jom is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
