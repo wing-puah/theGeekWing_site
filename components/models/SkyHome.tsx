@@ -227,7 +227,7 @@ const SkyHomeModel = (props = {}) => {
     config: { duration: 2000 },
     from: { position: props.position },
     to: {
-      position: [props.position[0], props.position[1] - 0.4, props.position[2]],
+      position: [props.position[0], props.position[1] - 0.5, props.position[2]],
     },
   });
 

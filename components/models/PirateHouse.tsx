@@ -15,64 +15,60 @@ function PirateHouse(props) {
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          <group rotation={[-Math.PI / 2, 0, 0.38]} scale={[1.05, 1, 0.69]}>
-            <group position={[-85.31, 817.61, 798.61]}>
-              <mesh
-                geometry={nodes.island_Island_0.geometry}
-                material={nodes.island_Island_0.material}
-              />
-            </group>
-          </group>
-          <group rotation={[-Math.PI / 2, 0, 0.38]}>
-            <group position={[-85.31, 817.61, 798.61]}>
-              <mesh
-                geometry={nodes.Building001_Building_0.geometry}
-                material={nodes.Building001_Building_0.material}
-              />
-              <mesh
-                geometry={nodes.Building001_Building_0_1.geometry}
-                material={nodes.Building001_Building_0_1.material}
-              />
-            </group>
-          </group>
-          <group rotation={[-Math.PI / 2, 0, 0.38]}>
-            <group position={[-85.31, 817.61, 798.61]}>
-              <mesh
-                geometry={nodes.sky_Sky_Material_0.geometry}
-                material={materials.Sky_Material}
-              />
-            </group>
-          </group>
-          <group rotation={[-Math.PI / 2, 0, 0.38]}>
-            <group position={[-85.31, 817.61, 798.61]}>
-              <mesh
-                geometry={nodes.Sea_Sea_Material_0.geometry}
-                material={materials.Sea_Material}
-              />
-            </group>
-          </group>
-          <group rotation={[-Math.PI / 2, 0, 0.38]}>
-            <group position={[-85.31, 817.61, 798.61]}>
-              <mesh
-                geometry={nodes.Opacity_Island_0.geometry}
-                material={nodes.Opacity_Island_0.material}
-              />
-              <mesh
-                geometry={nodes.Opacity_IslandOpacity_0.geometry}
-                material={materials.IslandOpacity}
-              />
-            </group>
-          </group>
-          <group rotation={[-Math.PI / 2, 0, 0.38]}>
-            <group position={[-85.31, 817.61, 798.61]}>
-              <mesh
-                geometry={nodes.Metal_Metal_0.geometry}
-                material={materials.Metal}
-              />
-            </group>
-          </group>
+      <group rotation={[-Math.PI / 2, 0, 0.38]} scale={[1.05, 1, 0.69]}>
+        <group position={[-85.31, 817.61, 798.61]}>
+          <mesh
+            geometry={nodes.island_Island_0.geometry}
+            material={nodes.island_Island_0.material}
+          />
+        </group>
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0.38]}>
+        <group position={[-85.31, 817.61, 798.61]}>
+          <mesh
+            geometry={nodes.Building001_Building_0.geometry}
+            material={nodes.Building001_Building_0.material}
+          />
+          <mesh
+            geometry={nodes.Building001_Building_0_1.geometry}
+            material={nodes.Building001_Building_0_1.material}
+          />
+        </group>
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0.38]}>
+        <group position={[-85.31, 817.61, 798.61]}>
+          <mesh
+            geometry={nodes.sky_Sky_Material_0.geometry}
+            material={materials.Sky_Material}
+          />
+        </group>
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0.38]}>
+        <group position={[-85.31, 817.61, 798.61]}>
+          <mesh
+            geometry={nodes.Sea_Sea_Material_0.geometry}
+            material={materials.Sea_Material}
+          />
+        </group>
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0.38]}>
+        <group position={[-85.31, 817.61, 798.61]}>
+          <mesh
+            geometry={nodes.Opacity_Island_0.geometry}
+            material={nodes.Opacity_Island_0.material}
+          />
+          <mesh
+            geometry={nodes.Opacity_IslandOpacity_0.geometry}
+            material={materials.IslandOpacity}
+          />
+        </group>
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0.38]}>
+        <group position={[-85.31, 817.61, 798.61]}>
+          <mesh
+            geometry={nodes.Metal_Metal_0.geometry}
+            material={materials.Metal}
+          />
         </group>
       </group>
     </group>

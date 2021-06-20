@@ -47,6 +47,8 @@ pm2 start npm --name "next" -- start
 
 [React & Three.js | Building Interactive Minecraft Chest Model with React Three Fiber | Episode 1](https://www.youtube.com/watch?v=ClUZKhYLeqc)
 
+[Camera panning sandbox](https://codesandbox.io/s/camera-pan-nsb7f?file=/src/App.js)
+
 "SSRBs_Hololive" (https://skfb.ly/onQON) by Armored Interactive is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 ### gtlf models
