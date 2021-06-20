@@ -1,7 +1,15 @@
-import { useRef } from 'react';
+import { useRef, useState, Suspense } from 'react';
 
-import { SpotLightHelper, DirectionalLightHelper } from 'three';
+import {
+  SpotLightHelper,
+  DirectionalLightHelper,
+  MeshBasicMaterial,
+  DoubleSide,
+} from 'three';
+
 import { useHelper } from '@react-three/drei';
+
+import useMount from 'reactHooks/useMount';
 
 const Light = () => {
   const spotlightRef = useRef();
@@ -48,9 +56,40 @@ const Plane = () => {
   return (
     <mesh receiveShadow position={[0, -3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-      <shadowMaterial attach="material" opacity={0.2} />
+      <meshStandardMaterial color="white" />
     </mesh>
   );
 };
+{
+  /* <shadowMaterial attach="material" opacity={0.2} /> */
+}
 
-export { Light, Plane };
+const Sky = () => {
+  const [texture, setTexture] = useState(null);
+
+  useMount(() => {
+    const { TextureLoader } = require('three/src/loaders/TextureLoader');
+    const loader = new TextureLoader();
+    loader.load('textures/purple_sky.png', function (texture) {
+      setTexture(texture);
+    });
+  });
+
+  if (!texture) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <mesh position={[0, 0, -30]}>
+        <planeGeometry args={[400, 200]} attach="geometry" />
+        <meshStandardMaterial
+          map={texture}
+          attach="material"
+          opacity={1}
+          side={DoubleSide}
+        />
+      </mesh>
+    </Suspense>
+  );
+};
+
+export { Light, Plane, Sky };

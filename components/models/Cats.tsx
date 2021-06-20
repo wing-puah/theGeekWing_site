@@ -10,6 +10,25 @@ import { useRef, useState, useEffect, Suspense } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
+function ExcitedCat(props) {
+  const group = useRef();
+  const { nodes, materials } = useGLTF('/four_cats/scene.gltf');
+
+  return (
+    <Suspense fallback={null}>
+      <mesh ref={group} {...props} dispose={null}>
+        <primitive object={nodes._rootJoint_1} />
+        <skinnedMesh
+          castShadow
+          geometry={nodes.pasted__Cat_Volume53_ExcitedCat1_0.geometry}
+          material={materials.ExcitedCat1}
+          skeleton={nodes.pasted__Cat_Volume53_ExcitedCat1_0.skeleton}
+        />
+      </mesh>
+    </Suspense>
+  );
+}
+
 function FourCats(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF('/four_cats/scene.gltf');
@@ -38,7 +57,7 @@ function FourCats(props) {
   );
 }
 
-useGLTF.preload('/scene.gltf');
+useGLTF.preload('/four_cats/scene.gltf');
 
 const CatModel = () => {
   const meshRef = useRef();
@@ -63,4 +82,5 @@ const CatModel = () => {
   );
 };
 
+export { ExcitedCat };
 export default CatModel;

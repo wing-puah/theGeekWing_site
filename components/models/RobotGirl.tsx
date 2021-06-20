@@ -73,7 +73,7 @@ function FemaleRobot(props) {
   );
 }
 
-useGLTF.preload('/scene.gltf');
+useGLTF.preload('/female_cute_robot/scene.gltf');
 
 const Model = () => {
   const meshRef = useRef();

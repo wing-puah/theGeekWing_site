@@ -45,11 +45,13 @@ pm2 start npm --name "next" -- start
 
 [Replacing default perspective camera in reactJS app](https://discourse.threejs.org/t/replacing-default-perspective-camera-in-reactjs-app/17038)
 
+[React & Three.js | Building Interactive Minecraft Chest Model with React Three Fiber | Episode 1](https://www.youtube.com/watch?v=ClUZKhYLeqc)
+
 "SSRBs_Hololive" (https://skfb.ly/onQON) by Armored Interactive is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 ### gtlf models
 
--- run npx gltfjsx model.gltf ont he command line
+-- run `npx gltfjsx model.gltf` on the command line
 
 [gltfjsx](https://github.com/pmndrs/gltfjsx)
 
@@ -64,3 +66,11 @@ pm2 start npm --name "next" -- start
 <!-- "The Lighthouse" (https://skfb.ly/6rU7V) by cotman sam is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
 
 <!-- "Magic Book" (https://skfb.ly/6EysQ) by Jom is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
+<!-- "Low Poly Medieval Island" (https://skfb.ly/6uNHF) by Boooooop is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
+"stylised sky player home dioroma" (https://skfb.ly/P6nF) by Sander Vander Meiren is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Sea Keep "Lonely Watcher"" (https://skfb.ly/6zvyr) by Artjoms Horosilovs is licensed under CC Attribution-NonCommercial-ShareAlike (http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+"Pirate Island - Cargo Bay" (https://skfb.ly/6TDqZ) by YanoClaeys is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
