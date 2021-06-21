@@ -6,11 +6,14 @@ source: https://sketchfab.com/models/6597e6c9a5184f07a638ac33c08c2ad5
 title: stylised sky player home dioroma
 */
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useSpring, a } from '@react-spring/three';
-import { font } from './utils';
+import { useFrame } from '@react-three/fiber';
+
+import { CameraState } from 'components/home/config';
+import { font, scale } from './utils';
 
 function SkyHome(props) {
   const group = useRef();
@@ -221,7 +224,7 @@ function SkyHome(props) {
 
 useGLTF.preload('/sky_home/scene.gltf');
 
-const textOptions = {
+const textConfig = {
   font,
   size: 25,
   height: 5,
@@ -229,13 +232,29 @@ const textOptions = {
 
 const SkyHomeModel = (props = {}) => {
   const meshRef = useRef();
+  const textMeshRef = useRef();
+
+  const [loadText, setLoadText] = useState(false);
+
+  useFrame((state) => {
+    if (loadText && textMeshRef.current && textMeshRef.current.scale.x !== 1) {
+      scale(textMeshRef.current);
+    }
+
+    if (
+      !loadText &&
+      state.camera.position.getComponent(2) > CameraState.to[2] - 7
+    ) {
+      setLoadText(true);
+    }
+  });
 
   const { position } = useSpring({
     loop: { reverse: true },
     config: { duration: 2000 },
     from: { position: props.position },
     to: {
-      position: [props.position[0], props.position[1] - 0.5, props.position[2]],
+      position: [props.position[0], props.position[1] - 1.5, props.position[2]],
     },
   });
 
@@ -243,8 +262,8 @@ const SkyHomeModel = (props = {}) => {
     <>
       <a.mesh ref={meshRef} castShadow {...props} position={position}>
         <group>
-          <mesh position={[0, 100, 0]}>
-            <textGeometry attach="geometry" args={['Blog', textOptions]} />
+          <mesh position={[0, 100, 0]} scale={[0, 0, 0]} ref={textMeshRef}>
+            <textGeometry attach="geometry" args={['Blog', textConfig]} />
             <meshLambertMaterial
               attach="material"
               side={THREE.DoubleSide}

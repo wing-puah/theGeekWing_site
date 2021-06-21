@@ -14,6 +14,8 @@ import { useHelper, useProgress, OrbitControls } from '@react-three/drei';
 
 import useMount from 'reactHooks/useMount';
 
+import { CameraState } from 'components/home/config';
+
 const Light = () => {
   const spotlightRef = useRef();
   const spotlightTwoRef = useRef();
@@ -98,6 +100,7 @@ const Sky = () => {
 // Create the zoom effect once the page has loaded
 const CameraControls = () => {
   const vec = new Vector3();
+
   const [isMounted, setIsMounted] = useState(false);
   const [enableControls, setEnableControls] = useState(false);
   const [updateCameraPosition, setUpdateCameraPosition] = useState(true);
@@ -119,10 +122,11 @@ const CameraControls = () => {
 
     if (!isMounted || !updateCameraPosition) return;
     state.camera.fov = MathUtils.lerp(state.camera.fov, 70, step);
-    state.camera.position.lerp(vec.set(10, 8, 35), step);
+    const [x, y, z] = CameraState.to;
+    state.camera.position.lerp(vec.set(x, y, z), step);
     state.camera.lookAt(0, 0, 0);
     state.camera.updateProjectionMatrix();
-    if (state.camera.position.z >= 34 && state.camera.fov >= 69) {
+    if (state.camera.position.z >= z - 1 && state.camera.fov >= 69) {
       setUpdateCameraPosition(false);
       setEnableControls(true);
     }

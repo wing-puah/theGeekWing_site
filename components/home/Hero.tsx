@@ -6,6 +6,8 @@ import { Html, useHelper, Loader, softShadows } from '@react-three/drei';
 
 import useMount from 'reactHooks/useMount';
 
+import { CameraState } from 'components/home/config';
+
 import { Light, CameraControls } from 'models/Base';
 import LighthouseModel from 'models/Lighthouse';
 import IslandModel from 'models/Island';
@@ -36,7 +38,7 @@ const Hero = () => {
         camera={{
           fov: 60,
           zoom: 1,
-          position: [0, 35, 10],
+          position: CameraState.from,
         }}
       >
         <Suspense fallback={null}>

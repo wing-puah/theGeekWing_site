@@ -6,9 +6,13 @@ source: https://sketchfab.com/3d-models/pirate-island-cargo-bay-a45eb7d3f0c9475c
 title: Pirate Island - Cargo Bay
 */
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+
+import { CameraState } from 'components/home/config';
+import { font, scale } from './utils';
 
 function PirateHouse(props) {
   const group = useRef();
@@ -78,9 +82,7 @@ function PirateHouse(props) {
 
 useGLTF.preload('/pirate_island/scene.gltf');
 
-const JSONfont = require('three/examples/fonts/droid/droid_serif_bold.typeface.json');
-const font = new THREE.FontLoader().parse(JSONfont);
-const textOptions = {
+const textConfig = {
   font,
   size: 200,
   height: 20,
@@ -88,13 +90,29 @@ const textOptions = {
 
 const PirateHouseModel = (props = {}) => {
   const meshRef = useRef();
+  const textMeshRef = useRef();
+
+  const [loadText, setLoadText] = useState(false);
+
+  useFrame((state) => {
+    if (loadText && textMeshRef.current && textMeshRef.current.scale.x !== 1) {
+      scale(textMeshRef.current);
+    }
+
+    if (
+      !loadText &&
+      state.camera.position.getComponent(2) > CameraState.to[2] - 4
+    ) {
+      setLoadText(true);
+    }
+  });
 
   return (
     <>
       <mesh ref={meshRef} {...props}>
         <group>
-          <mesh position={[0, 100, 900]}>
-            <textGeometry attach="geometry" args={['Credits', textOptions]} />
+          <mesh position={[0, 100, 900]} scale={[0, 0, 0]} ref={textMeshRef}>
+            <textGeometry attach="geometry" args={['Credits', textConfig]} />
             <meshLambertMaterial
               attach="material"
               side={THREE.DoubleSide}
@@ -108,8 +126,4 @@ const PirateHouseModel = (props = {}) => {
   );
 };
 
-// <Text fontSize={500} color={palette.text.primary}>
-//   <meshBasicMaterial attach="material" side={DoubleSide} color="#E10000" />
-//   Credits
-// </Text>;
 export default PirateHouseModel;

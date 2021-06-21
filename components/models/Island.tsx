@@ -6,12 +6,13 @@ source: https://sketchfab.com/3d-models/low-poly-medieval-island-361f02265937462
 title: Low Poly Medieval Island
 */
 
-import { useRef, Suspense } from 'react';
+import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
-import { useSpring, a } from '@react-spring/three';
+import { useFrame } from '@react-three/fiber';
 
-import { font } from './utils';
+import { CameraState } from 'components/home/config';
+import { font, scale } from './utils';
 
 function Island(props) {
   const group = useRef();
@@ -695,7 +696,7 @@ function Island(props) {
 
 useGLTF.preload('/low_poly_medieval_island/scene.gltf');
 
-const textOptions = {
+const textConfig = {
   font,
   size: 1.5,
   height: 0.5,
@@ -703,19 +704,36 @@ const textOptions = {
 
 const IslandModel = (props = {}) => {
   const meshRef = useRef();
+  const textMeshRef = useRef();
+
+  const [loadText, setLoadText] = useState(false);
+
+  useFrame((state) => {
+    if (loadText && textMeshRef.current && textMeshRef.current.scale.x !== 1) {
+      scale(textMeshRef.current);
+    }
+
+    if (
+      !loadText &&
+      state.camera.position.getComponent(2) > CameraState.to[2] - 10
+    ) {
+      setLoadText(true);
+    }
+  });
 
   return (
     <>
       <mesh ref={meshRef} castShadow {...props}>
         <group>
-          <mesh position={[0, 2, 0]}>
-            <textGeometry attach="geometry" args={['About', textOptions]} />
+          <mesh position={[0, 2, 0]} scale={[0, 0, 0]} ref={textMeshRef}>
+            <textGeometry attach="geometry" args={['About', textConfig]} />
             <meshLambertMaterial
               attach="material"
               side={THREE.DoubleSide}
               color={0xba0000}
             />
           </mesh>
+
           <Island />
         </group>
       </mesh>

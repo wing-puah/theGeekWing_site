@@ -6,12 +6,13 @@ source: https://sketchfab.com/models/1a85945dd2a840f594bf6cb003176a54
 title: The Lighthouse
 */
 
-import { useRef, useState, useEffect, Suspense } from 'react';
+import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
-import { font } from './utils';
+import { CameraState } from 'components/home/config';
+import { font, scale } from './utils';
 
 function Lighthouse(props) {
   const group = useRef();
@@ -921,7 +922,7 @@ function Lighthouse(props) {
 
 useGLTF.preload('/lighthouse/scene.gltf');
 
-const textOptions = {
+const textConfig = {
   font,
   size: 40,
   height: 5,
@@ -929,21 +930,29 @@ const textOptions = {
 
 const LighthouseModel = (props = {}) => {
   const meshRef = useRef();
+  const textMeshRef = useRef();
 
-  // useFrame(({ gl }) => {
-  //   if (meshRef && meshRef.current) {
-  //     meshRef.current.position.x = 5;
-  //     meshRef.current.position.y = -2;
-  //     // meshRef.current.rotation.y += 0.01;
-  //   }
-  // });
+  const [loadText, setLoadText] = useState(false);
+
+  useFrame((state) => {
+    if (loadText && textMeshRef.current && textMeshRef.current.scale.x !== 1) {
+      scale(textMeshRef.current);
+    }
+
+    if (
+      !loadText &&
+      state.camera.position.getComponent(2) > CameraState.to[2] - 1
+    ) {
+      setLoadText(true);
+    }
+  });
 
   return (
     <>
       <mesh ref={meshRef} {...props}>
         <group>
-          <mesh position={[-280, 250, 50]}>
-            <textGeometry attach="geometry" args={['Contact', textOptions]} />
+          <mesh position={[-280, 250, 50]} scale={[0, 0, 0]} ref={textMeshRef}>
+            <textGeometry attach="geometry" args={['Contact', textConfig]} />
             <meshLambertMaterial
               attach="material"
               side={THREE.DoubleSide}
