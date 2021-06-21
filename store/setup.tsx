@@ -2,27 +2,9 @@ import { useMemo } from 'react';
 import { createStore, applyMiddleware, Store } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import { reducer, initialState, state } from './reducer';
+
 let store;
-
-type state = {
-  loadText: boolean;
-};
-
-type action = { type: string; payload: any };
-
-const initialState: state = { loadText: false };
-
-const reducer = (state = initialState, action: action): state => {
-  switch (action.type) {
-    case 'END_CAMERA_PAN':
-      return {
-        ...state,
-        loadText: true,
-      };
-    default:
-      return state;
-  }
-};
 
 function initStore(preloadedState: state = initialState) {
   return createStore(
