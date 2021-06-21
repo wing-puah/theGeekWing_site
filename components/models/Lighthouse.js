@@ -7,8 +7,11 @@ title: The Lighthouse
 */
 
 import { useRef, useState, useEffect, Suspense } from 'react';
+import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+
+import { font } from './utils';
 
 function Lighthouse(props) {
   const group = useRef();
@@ -918,6 +921,12 @@ function Lighthouse(props) {
 
 useGLTF.preload('/lighthouse/scene.gltf');
 
+const textOptions = {
+  font,
+  size: 40,
+  height: 5,
+};
+
 const LighthouseModel = (props = {}) => {
   const meshRef = useRef();
 
@@ -932,9 +941,17 @@ const LighthouseModel = (props = {}) => {
   return (
     <>
       <mesh ref={meshRef} {...props}>
-        <Suspense fallback={null}>
+        <group>
+          <mesh position={[-280, 250, 50]}>
+            <textGeometry attach="geometry" args={['Contact', textOptions]} />
+            <meshLambertMaterial
+              attach="material"
+              side={THREE.DoubleSide}
+              color={0xba0000}
+            />
+          </mesh>
           <Lighthouse />
-        </Suspense>
+        </group>
       </mesh>
     </>
   );

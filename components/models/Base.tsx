@@ -1,13 +1,16 @@
-import { useRef, useState, Suspense } from 'react';
+import { useRef, useState, useEffect, Suspense } from 'react';
 
 import {
   SpotLightHelper,
   DirectionalLightHelper,
   MeshBasicMaterial,
   DoubleSide,
+  MathUtils,
+  Vector3,
 } from 'three';
+import { useThree, useFrame } from '@react-three/fiber';
 
-import { useHelper } from '@react-three/drei';
+import { useHelper, useProgress, OrbitControls } from '@react-three/drei';
 
 import useMount from 'reactHooks/useMount';
 
@@ -92,4 +95,48 @@ const Sky = () => {
   );
 };
 
-export { Light, Plane, Sky };
+// Create the zoom effect once the page has loaded
+const CameraControls = () => {
+  const vec = new Vector3();
+  const [isMounted, setIsMounted] = useState(false);
+  const [enableControls, setEnableControls] = useState(false);
+  const [updateCameraPosition, setUpdateCameraPosition] = useState(true);
+  const {
+    camera,
+    gl: { domElement },
+  } = useThree();
+  const { progress } = useProgress();
+  const controls = useRef();
+
+  useEffect(() => {
+    if (progress === 100) {
+      setIsMounted(true);
+    }
+  }, [progress]);
+
+  useFrame((state) => {
+    const step = 0.03;
+
+    if (!isMounted || !updateCameraPosition) return;
+    state.camera.fov = MathUtils.lerp(state.camera.fov, 70, step);
+    state.camera.position.lerp(vec.set(10, 8, 35), step);
+    state.camera.lookAt(0, 0, 0);
+    state.camera.updateProjectionMatrix();
+    if (state.camera.position.z >= 34 && state.camera.fov >= 69) {
+      setUpdateCameraPosition(false);
+      setEnableControls(true);
+    }
+  });
+
+  return (
+    // Oribital controls via drei
+    <OrbitControls
+      enablePan={enableControls}
+      enableZoom={enableControls}
+      ref={controls}
+      args={[camera, domElement]}
+    />
+  );
+};
+
+export { Light, Plane, Sky, CameraControls };

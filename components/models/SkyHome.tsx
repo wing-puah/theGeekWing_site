@@ -6,9 +6,11 @@ source: https://sketchfab.com/models/6597e6c9a5184f07a638ac33c08c2ad5
 title: stylised sky player home dioroma
 */
 
-import { useRef, Suspense } from 'react';
+import { useRef } from 'react';
+import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useSpring, a } from '@react-spring/three';
+import { font } from './utils';
 
 function SkyHome(props) {
   const group = useRef();
@@ -219,6 +221,12 @@ function SkyHome(props) {
 
 useGLTF.preload('/sky_home/scene.gltf');
 
+const textOptions = {
+  font,
+  size: 25,
+  height: 5,
+};
+
 const SkyHomeModel = (props = {}) => {
   const meshRef = useRef();
 
@@ -234,9 +242,17 @@ const SkyHomeModel = (props = {}) => {
   return (
     <>
       <a.mesh ref={meshRef} castShadow {...props} position={position}>
-        <Suspense fallback={null}>
+        <group>
+          <mesh position={[0, 100, 0]}>
+            <textGeometry attach="geometry" args={['Blog', textOptions]} />
+            <meshLambertMaterial
+              attach="material"
+              side={THREE.DoubleSide}
+              color={0xba0000}
+            />
+          </mesh>
           <SkyHome />
-        </Suspense>
+        </group>
       </a.mesh>
     </>
   );

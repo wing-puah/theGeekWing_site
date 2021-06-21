@@ -1,19 +1,12 @@
 import { useRef, useState, useEffect, Suspense } from 'react';
 import styled from 'styled-components';
-import * as THREE from 'three';
 
-import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import {
-  Html,
-  useHelper,
-  Loader,
-  OrbitControls,
-  softShadows,
-} from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { Html, useHelper, Loader, softShadows } from '@react-three/drei';
 
 import useMount from 'reactHooks/useMount';
 
-import { Light } from 'models/Base';
+import { Light, CameraControls } from 'models/Base';
 import LighthouseModel from 'models/Lighthouse';
 import IslandModel from 'models/Island';
 import SkyHomeModel from 'models/SkyHome';
@@ -29,49 +22,6 @@ const Wrapper = styled.div`
 `;
 
 softShadows();
-
-// Create the zoom effect once the page has loaded
-const CameraControls = () => {
-  const vec = new THREE.Vector3();
-  const [isMounted, setIsMounted] = useState(false);
-  const [updateCameraPosition, setUpdateCameraPosition] = useState(true);
-  const {
-    camera,
-    gl: { domElement },
-  } = useThree();
-  const controls = useRef();
-
-  useMount(() => {
-    setTimeout(() => {
-      setIsMounted(true);
-    }, 5000);
-  });
-
-  useFrame((state) => {
-    const step = 0.03;
-
-    if (!isMounted || !updateCameraPosition) return;
-    state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, 70, step);
-    state.camera.position.lerp(vec.set(10, 8, 35), step);
-    state.camera.lookAt(0, 0, 0);
-    state.camera.updateProjectionMatrix();
-    if (state.camera.position.z >= 34 && state.camera.fov >= 69) {
-      setUpdateCameraPosition(false);
-    }
-  });
-
-  return (
-    // Oribital controls via drei
-    <OrbitControls
-      // enableZoom={false}
-      enablePan
-      enableZoom
-      ref={controls}
-      // enablePan={false}
-      args={[camera, domElement]}
-    />
-  );
-};
 
 const Hero = () => {
   const log = (e) => {

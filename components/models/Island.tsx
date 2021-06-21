@@ -7,10 +7,11 @@ title: Low Poly Medieval Island
 */
 
 import { useRef, Suspense } from 'react';
+import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useSpring, a } from '@react-spring/three';
 
-import { ExcitedCat } from './Cats';
+import { font } from './utils';
 
 function Island(props) {
   const group = useRef();
@@ -694,23 +695,30 @@ function Island(props) {
 
 useGLTF.preload('/low_poly_medieval_island/scene.gltf');
 
+const textOptions = {
+  font,
+  size: 1.5,
+  height: 0.5,
+};
+
 const IslandModel = (props = {}) => {
   const meshRef = useRef();
 
-  // useFrame(({ gl }) => {
-  //   if (meshRef && meshRef.current) {
-  //     meshRef.current.scale.set(0.8, 0.8, 0.8);
-  //     // meshRef.current.rotation.y += 0.01;
-  //   }
-  // });
-
   return (
     <>
-      <a.mesh ref={meshRef} castShadow {...props}>
-        <Suspense fallback={null}>
+      <mesh ref={meshRef} castShadow {...props}>
+        <group>
+          <mesh position={[0, 2, 0]}>
+            <textGeometry attach="geometry" args={['About', textOptions]} />
+            <meshLambertMaterial
+              attach="material"
+              side={THREE.DoubleSide}
+              color={0xba0000}
+            />
+          </mesh>
           <Island />
-        </Suspense>
-      </a.mesh>
+        </group>
+      </mesh>
     </>
   );
 };

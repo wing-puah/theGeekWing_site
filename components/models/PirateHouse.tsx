@@ -6,7 +6,8 @@ source: https://sketchfab.com/3d-models/pirate-island-cargo-bay-a45eb7d3f0c9475c
 title: Pirate Island - Cargo Bay
 */
 
-import { useRef, Suspense } from 'react';
+import { useRef } from 'react';
+import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 
 function PirateHouse(props) {
@@ -77,26 +78,38 @@ function PirateHouse(props) {
 
 useGLTF.preload('/pirate_island/scene.gltf');
 
+const JSONfont = require('three/examples/fonts/droid/droid_serif_bold.typeface.json');
+const font = new THREE.FontLoader().parse(JSONfont);
+const textOptions = {
+  font,
+  size: 200,
+  height: 20,
+};
+
 const PirateHouseModel = (props = {}) => {
   const meshRef = useRef();
-
-  // useFrame(({ gl }) => {
-  //   if (meshRef && meshRef.current) {
-  //     meshRef.current.position.x = 5;
-  //     meshRef.current.position.y = -2;
-  //     // meshRef.current.rotation.y += 0.01;
-  //   }
-  // });
 
   return (
     <>
       <mesh ref={meshRef} {...props}>
-        <Suspense fallback={null}>
+        <group>
+          <mesh position={[0, 100, 900]}>
+            <textGeometry attach="geometry" args={['Credits', textOptions]} />
+            <meshLambertMaterial
+              attach="material"
+              side={THREE.DoubleSide}
+              color={0xba0000}
+            />
+          </mesh>
           <PirateHouse />
-        </Suspense>
+        </group>
       </mesh>
     </>
   );
 };
 
+// <Text fontSize={500} color={palette.text.primary}>
+//   <meshBasicMaterial attach="material" side={DoubleSide} color="#E10000" />
+//   Credits
+// </Text>;
 export default PirateHouseModel;

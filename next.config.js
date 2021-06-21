@@ -1,19 +1,20 @@
 const path = require('path');
 
-const fileAlias = {
-  components: 'components',
-  UI: 'components/UI',
-  styles: 'components/styles',
-  reactHooks: 'components/reactHooks',
-  models: 'components/models',
-  layouts: 'layouts',
-  public: 'public',
-};
+const moduleAlias = [
+  { key: 'layouts', pathname: 'layouts' },
+  { key: 'pages', pathname: 'pages' },
+  { key: 'components', pathname: 'components' },
+  { key: 'store', pathname: 'store' },
+  { key: 'styles', pathname: 'components/styles' },
+  { key: 'UI', pathname: 'components/UI' },
+  { key: 'reactHooks', pathname: 'components/reactHooks' },
+  { key: 'models', pathname: 'components/models' },
+];
 
 module.exports = {
   webpack: (config) => {
-    const alias = Object.entries(fileAlias).reduce((acc, [k, v]) => {
-      acc[k] = path.join(__dirname, v);
+    const alias = moduleAlias.reduce((acc, { key, pathname }) => {
+      acc[key] = path.join(__dirname, pathname);
       return acc;
     }, {});
 
@@ -21,9 +22,7 @@ module.exports = {
       ...config.resolve.alias,
       ...alias,
     };
-    // moduleAlias.forEach(({ key, pathname }) => {
-    //   config.resolve.alias[key] = path.join(__dirname, pathname);
-    // });
+
     return config;
   },
 };

@@ -1,17 +1,21 @@
 import Head from 'next/head';
 import { FunctionComponent } from 'react';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
 import theme from 'styles/theme';
 import GlobalStyles from 'styles/globalStyles';
 
+import { useStore } from 'store/setup';
+
 type MyAppProps = {
   Component: any;
-  pageProps: {};
+  pageProps: any;
 };
 
 const MyApp: FunctionComponent<MyAppProps> = ({ Component, pageProps }) => {
   const getLayout = Component.getLayout || ((page) => page);
+  const store = useStore(pageProps.initialReduxState);
 
   return (
     <>
@@ -23,7 +27,9 @@ const MyApp: FunctionComponent<MyAppProps> = ({ Component, pageProps }) => {
       </Head>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        {getLayout(<Component {...pageProps} />)}
+        <Provider store={store}>
+          {getLayout(<Component {...pageProps} />)}
+        </Provider>
       </ThemeProvider>
     </>
   );

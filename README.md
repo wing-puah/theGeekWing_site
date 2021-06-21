@@ -33,6 +33,10 @@ pm2 start npm --name "next" -- start
 
 [Mixamo](https://www.mixamo.com/#/)
 
+## Typescript resources
+
+[A type-safe approach to Redux stores in TypeScript](https://medium.com/@resir014/a-type-safe-approach-to-redux-stores-in-typescript-6474e012b81e#_=_)
+
 ## Three.js resources
 
 [gatsby-react-three-fiber-demo](https://github.com/jlengstorf/gatsby-react-three-fiber-demo/blob/master/src/pages/index.js)
@@ -48,6 +52,8 @@ pm2 start npm --name "next" -- start
 [React & Three.js | Building Interactive Minecraft Chest Model with React Three Fiber | Episode 1](https://www.youtube.com/watch?v=ClUZKhYLeqc)
 
 [Camera panning sandbox](https://codesandbox.io/s/camera-pan-nsb7f?file=/src/App.js)
+
+[Text geometry](https://codesandbox.io/s/recursing-sun-mc2ny?file=/src/App.js:1547-1594)
 
 "SSRBs_Hololive" (https://skfb.ly/onQON) by Armored Interactive is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
